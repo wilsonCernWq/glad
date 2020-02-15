@@ -26,8 +26,8 @@ if(TARGET OpenGL::GLU)
 endif()
 target_link_libraries(GLAD PUBLIC ${CMAKE_DL_LIBS})
 target_include_directories(GLAD PUBLIC
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include;>"
-  "$<INSTALL_INTERFACE:${in_INSTALL_INCDIR}>")
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
+  $<INSTALL_INTERFACE:${in_INSTALL_INCDIR}>)
 target_compile_definitions(GLAD PUBLIC GLAD_GLAPI_EXPORT=1)
 set_target_properties(GLAD PROPERTIES
   ARCHIVE_OUTPUT_DIRECTORY ${in_LIB_OUTPUT_PATH}
