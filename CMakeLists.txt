@@ -18,7 +18,7 @@ find_package(OpenGL REQUIRED)
 # └──────────────────────────────────────────────────────────────────┘
 set_source_files_properties(src/glad.c PROPERTIES LANGUAGE CXX)
 
-add_library(GLAD 
+add_library(glad 
 SHARED
   include/glad/glad.h
   include/KHR/khrplatform.h
@@ -26,26 +26,26 @@ SHARED
 )
 
 if(TARGET OpenGL::OpenGL)
-  target_link_libraries(GLAD PUBLIC OpenGL::OpenGL)
+  target_link_libraries(glad PUBLIC OpenGL::OpenGL)
 else()
-  target_link_libraries(GLAD PUBLIC OpenGL::GL)
+  target_link_libraries(glad PUBLIC OpenGL::GL)
 endif()
 if(TARGET OpenGL::GLU)
-  target_link_libraries(GLAD PUBLIC OpenGL::GLU)
+  target_link_libraries(glad PUBLIC OpenGL::GLU)
 endif()
 
-target_link_libraries(GLAD 
+target_link_libraries(glad 
 PUBLIC 
   ${CMAKE_DL_LIBS}
 )
 
-target_include_directories(GLAD 
+target_include_directories(glad 
 PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
 )
 
-target_compile_definitions(GLAD
+target_compile_definitions(glad
 PUBLIC 
   GLAD_GLAPI_EXPORT
 PRIVATE 
@@ -59,7 +59,7 @@ PUBLIC
 # │  Configure Install                                               │
 # └──────────────────────────────────────────────────────────────────┘
 # 'make install' to the correct locations (provided by GNUInstallDirs).
-install(TARGETS GLAD EXPORT GLADConfig) # Windows
+install(TARGETS glad EXPORT gladExport) # Windows
 
 if(INSTALL_DEV_HEADERS)
 
@@ -68,15 +68,15 @@ if(INSTALL_DEV_HEADERS)
   # This makes the project importable from the install directory
   # Put config file in per-project dir (name MUST match), can also
   # just go into 'cmake'.
-  install(EXPORT GLADConfig
-    NAMESPACE GLAD::
+  install(EXPORT GLADExport
+    # NAMESPACE GLAD::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glad
   )
 
   # This makes the project importable from the build directory
-  export(TARGETS GLAD
-    NAMESPACE GLAD::
-    FILE ${CMAKE_INSTALL_LIBDIR}/cmake/glad/GLADConfig.cmake
+  export(TARGETS glad
+    # NAMESPACE GLAD::
+    FILE ${CMAKE_INSTALL_LIBDIR}/cmake/glad/gladConfig.cmake
   )
 
 endif()
