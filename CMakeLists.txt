@@ -59,7 +59,7 @@ PUBLIC
 # │  Configure Install                                               │
 # └──────────────────────────────────────────────────────────────────┘
 # 'make install' to the correct locations (provided by GNUInstallDirs).
-install(TARGETS glad EXPORT gladExport) # Windows
+install(TARGETS glad EXPORT gladConfig) # Windows
 
 if(INSTALL_DEV_HEADERS)
 
@@ -68,7 +68,7 @@ if(INSTALL_DEV_HEADERS)
   # This makes the project importable from the install directory
   # Put config file in per-project dir (name MUST match), can also
   # just go into 'cmake'.
-  install(EXPORT gladExport
+  install(EXPORT gladConfig
     # NAMESPACE GLAD::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glad
   )
