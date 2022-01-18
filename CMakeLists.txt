@@ -1,5 +1,6 @@
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Global Properties                                               │
+# │  TODO: Support other Core APIs in new branches                   │
 # └──────────────────────────────────────────────────────────────────┘
 cmake_minimum_required(VERSION 3.3)
 project(GLAD CXX)
