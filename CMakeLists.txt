@@ -68,7 +68,7 @@ if(INSTALL_DEV_HEADERS)
   # This makes the project importable from the install directory
   # Put config file in per-project dir (name MUST match), can also
   # just go into 'cmake'.
-  install(EXPORT GLADExport
+  install(EXPORT gladExport
     # NAMESPACE GLAD::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glad
   )
