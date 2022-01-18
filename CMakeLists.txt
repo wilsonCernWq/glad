@@ -15,6 +15,8 @@ find_package(OpenGL REQUIRED)
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Configure Source Files                                          │
 # └──────────────────────────────────────────────────────────────────┘
+set_source_files_properties(src/glad.c PROPERTIES LANGUAGE CXX)
+
 add_library(GLAD 
 SHARED
   include/glad/glad.h
