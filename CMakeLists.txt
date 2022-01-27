@@ -18,13 +18,11 @@ find_package(OpenGL REQUIRED)
 # └──────────────────────────────────────────────────────────────────┘
 set_source_files_properties(src/glad.c PROPERTIES LANGUAGE CXX)
 
-add_library(glad # SHARED
+add_library(glad SHARED
   include/glad/glad.h
   include/KHR/khrplatform.h
   src/glad.c
 )
-
-set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 if(TARGET OpenGL::OpenGL)
   target_link_libraries(glad PUBLIC OpenGL::OpenGL)
@@ -47,19 +45,25 @@ PUBLIC
 )
 
 target_compile_definitions(glad
+PUBLIC 
+  GLAD_GLAPI_EXPORT
+PRIVATE 
+  GLAD_GLAPI_EXPORT_BUILD
+
 PUBLIC
   GLAD_GLAPI_CORE_VERSION_MAJOR=3
   GLAD_GLAPI_CORE_VERSION_MINOR=3
 )
 
-if(BUILD_SHARED_LIBS)
-  target_compile_definitions(glad
-  PUBLIC 
-    GLAD_GLAPI_EXPORT
-  PRIVATE 
-    GLAD_GLAPI_EXPORT_BUILD
-  )
-endif()
+# if(BUILD_SHARED_LIBS)
+#   target_compile_definitions(glad
+#   PUBLIC 
+#     GLAD_GLAPI_EXPORT
+#   PRIVATE 
+#     GLAD_GLAPI_EXPORT_BUILD
+#   )
+# endif()
+# set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Configure Install                                               │
