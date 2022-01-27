@@ -24,6 +24,8 @@ add_library(glad # SHARED
   src/glad.c
 )
 
+set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
 if(TARGET OpenGL::OpenGL)
   target_link_libraries(glad PUBLIC OpenGL::OpenGL)
 else()
