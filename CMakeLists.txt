@@ -47,14 +47,19 @@ PUBLIC
 )
 
 target_compile_definitions(glad
-PUBLIC 
-  GLAD_GLAPI_EXPORT
-PRIVATE 
-  GLAD_GLAPI_EXPORT_BUILD
 PUBLIC
   GLAD_GLAPI_CORE_VERSION_MAJOR=3
   GLAD_GLAPI_CORE_VERSION_MINOR=3
 )
+
+if(BUILD_SHARED_LIBS)
+  target_compile_definitions(glad
+  PUBLIC 
+    GLAD_GLAPI_EXPORT
+  PRIVATE 
+    GLAD_GLAPI_EXPORT_BUILD
+  )
+endif()
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Configure Install                                               │
