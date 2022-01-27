@@ -18,8 +18,7 @@ find_package(OpenGL REQUIRED)
 # └──────────────────────────────────────────────────────────────────┘
 set_source_files_properties(src/glad.c PROPERTIES LANGUAGE CXX)
 
-add_library(glad 
-SHARED
+add_library(glad # SHARED
   include/glad/glad.h
   include/KHR/khrplatform.h
   src/glad.c
