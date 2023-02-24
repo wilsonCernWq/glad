@@ -28,7 +28,8 @@ find_package(OpenGL REQUIRED)
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Configure Source Files                                          │
 # └──────────────────────────────────────────────────────────────────┘
-set(this glad-core-3.3)
+# set(this glad-core-3.3)
+set(this glad)
 
 # We need to build GLAD as a shared library in order to avoid some 
 # wired OpenGL issues. This is probably because both ViDi3D and the
